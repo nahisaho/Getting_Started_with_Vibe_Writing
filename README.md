@@ -1,9 +1,3 @@
----
-layout: default
-title: "Vibe Writing実践ガイド"
-description: "大学教職員向け生成AI利活用ハンドブックの作成を通じて、Vibe Writingの手法を学ぶ実践的なガイド"
----
-
 # Vibe Writing 実践ガイド - 目次
 
 大学教職員向け生成AI利活用ハンドブックの作成を通じて、Vibe Writingの手法を学ぶ実践的なガイドです。

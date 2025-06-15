@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vibe Writing実践ガイド</title>
-    <meta http-equiv="refresh" content="0; url=README.md">
-    <link rel="canonical" href="README.md">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif;
@@ -13,13 +11,15 @@
             margin: 50px auto;
             padding: 20px;
             line-height: 1.6;
+            color: #333;
         }
-        .redirect-message {
+        .header {
             text-align: center;
-            padding: 40px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border: 1px solid #e9ecef;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 30px;
         }
         .btn {
             display: inline-block;
@@ -29,32 +29,71 @@
             text-decoration: none;
             border-radius: 6px;
             margin: 10px;
+            transition: background 0.3s ease;
         }
         .btn:hover {
             background: #1565c0;
         }
+        .content {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        .nav-links {
+            text-align: center;
+            margin: 20px 0;
+        }
+        h2 {
+            color: #495057;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 10px;
+        }
     </style>
 </head>
 <body>
-    <div class="redirect-message">
+    <div class="header">
         <h1>🎯 Vibe Writing実践ガイド</h1>
         <p>大学教職員向け生成AI利活用ハンドブックの作成を通じて、<br>Vibe Writingの手法を学ぶ実践的なガイドです。</p>
+    </div>
+
+    <div class="content">
+        <h2>📚 ガイド文書</h2>
         
-        <p>自動的にメインページにリダイレクトされます...</p>
-        
-        <div>
-            <a href="README.md" class="btn">📚 ガイドを読む</a>
-            <a href="docs/" class="btn">📖 詳細ガイド</a>
+        <div class="nav-links">
+            <a href="docs/guides/what-is-vibe-writing.md" class="btn">1. Vibe Writingとは</a>
+            <a href="docs/guides/preparation.md" class="btn">2. 事前準備</a>
+            <a href="docs/guides/vibe-strategy-design.md" class="btn">3. 戦略設計</a>
+            <a href="docs/guides/document-creation-process.md" class="btn">4. 文書作成手順</a>
         </div>
-        
-        <script>
-            // GitHub Pagesでの表示を改善
-            if (window.location.hostname.includes('github.io')) {
-                setTimeout(() => {
-                    window.location.href = 'README.md';
-                }, 2000);
-            }
-        </script>
+
+        <div class="nav-links">
+            <a href="docs/guides/content-creation-execution.md" class="btn">5. 段階的制作</a>
+            <a href="docs/guides/workspace-setup.md" class="btn">6. ワークスペース設定</a>
+            <a href="docs/guides/presentation-creation-guide.md" class="btn">7. プレゼン作成</a>
+            <a href="docs/guides/summary.md" class="btn">8. 総括と成果</a>
+        </div>
+
+        <h2>🚀 はじめ方</h2>
+        <ol>
+            <li><a href="docs/guides/what-is-vibe-writing.md">Vibe Writingとは</a>を読んで基本概念を理解</li>
+            <li><a href="docs/guides/preparation.md">事前準備</a>で必要な環境を整備</li>
+            <li><a href="docs/guides/vibe-strategy-design.md">VIBEに基づくドキュメント戦略設計</a>で目次作成手法を学習</li>
+            <li>実際にハンドブック作成を開始</li>
+        </ol>
+
+        <h2>📖 本書の特徴</h2>
+        <ul>
+            <li><strong>実践的アプローチ</strong>: 実際のハンドブック作成を題材に学習</li>
+            <li><strong>段階的学習</strong>: 基礎から応用まで順を追って習得</li>
+            <li><strong>プロンプト例付き</strong>: すぐに使える具体的なプロンプトを多数収録</li>
+            <li><strong>セキュリティ重視</strong>: 機密情報の適切な管理方法も解説</li>
+        </ul>
+
+        <div class="nav-links">
+            <a href="README.md" class="btn">📄 詳細なREADME</a>
+            <a href="docs/" class="btn">📂 ガイド一覧</a>
+        </div>
     </div>
 </body>
 </html>
