@@ -19,6 +19,7 @@ lang: ja
 # プラグイン（GitHub Pages標準のみ）
 plugins:
   - jekyll-relative-links
+  - jekyll-optional-front-matter
 
 # 相対リンク設定
 relative_links:
@@ -38,6 +39,10 @@ defaults:
       layout: "default"
   - scope:
       path: "docs"
+    values:
+      layout: "default"
+  - scope:
+      path: "docs/guides"
     values:
       layout: "default"
 
