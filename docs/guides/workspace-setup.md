@@ -1,4 +1,4 @@
-[← 前の章へ](content-creation-execution.md) | [目次に戻る](../../README.md)
+[← 前の章へ](content-creation-execution.md) | [目次に戻る](../../README.md) | [次の章へ →](presentation-creation-guide.md)
 
 # ワークスペースの設定と分析データの管理
 
@@ -463,6 +463,6 @@ graph TD
 
 ---
 
-[← 前の章へ](content-creation-execution.md) | [目次に戻る](../../README.md)
+[← 前の章へ](content-creation-execution.md) | [目次に戻る](../../README.md) | [次の章へ →](presentation-creation-guide.md)
 
 ---
