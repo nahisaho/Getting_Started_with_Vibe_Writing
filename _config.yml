@@ -1,43 +1,46 @@
-# GitHub Pages設定（最小構成）
+# GitHub Pages設定
 title: "Vibe Writing実践ガイド"
 description: "大学教職員向け生成AI利活用ハンドブックの作成を通じて、Vibe Writingの手法を学ぶ実践的なガイド"
+baseurl: "/Getting_Started_with_Vibe_Writing"
+url: "https://nahisaho.github.io"
 
-# Markdownエンジン設定
+# ビルド設定
 markdown: kramdown
 kramdown:
   input: GFM
-  hard_wrap: false
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
-  smart_quotes: lsquo,rsquo,ldquo,rdquo
-  enable_coderay: false
+  syntax_highlighter: rouge
 
-# テーマ設定（GitHub Pagesデフォルト）
-theme: jekyll-theme-minimal
+# テーマなし（カスタムレイアウト使用）
+theme: null
 
 # 日本語対応
 lang: ja
 
-# プラグイン（GitHub Pages対応のみ）
+# プラグイン（GitHub Pages標準のみ）
 plugins:
   - jekyll-relative-links
-  - jekyll-default-layout
 
 # 相対リンク設定
 relative_links:
   enabled: true
   collections: true
 
-# デフォルトレイアウト設定
+# インクルード設定
+include:
+  - README.md
+  - index.html
+
+# デフォルト設定
 defaults:
   - scope:
       path: ""
-      type: "pages"
     values:
       layout: "default"
   - scope:
       path: "docs"
     values:
       layout: "default"
+
+# Sass設定（不要なので無効化）
+sass:
+  style: compressed
