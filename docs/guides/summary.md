@@ -1,8 +1,4 @@
----
-
 [← 前の章へ](presentation-creation-guide.md) | [目次に戻る](../../README.md)
-
----
 
 # Vibe Writing実践ガイド - 総括と成果
 

@@ -1,8 +1,4 @@
----
-
 [← 前の章へ](vibe-strategy-design.md) | [目次に戻る](../../README.md) | [次の章へ →](content-creation-execution.md)
-
----
 
 # 目次から文書へ：Claude codeによる効率的な文書作成手順
 

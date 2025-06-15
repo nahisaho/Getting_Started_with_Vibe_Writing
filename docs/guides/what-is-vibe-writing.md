@@ -1,8 +1,4 @@
----
-
 [← 目次に戻る](../../README.md) | [次の章へ →](preparation.md)
-
----
 
 # Vibe Writingとは
 

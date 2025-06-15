@@ -1,8 +1,4 @@
----
-
 [← 前の章へ](content-creation-execution.md) | [目次に戻る](../../README.md)
-
----
 
 # ワークスペースの設定と分析データの管理
 

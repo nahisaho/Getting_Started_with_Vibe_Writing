@@ -1,8 +1,4 @@
----
-
 [← 前の章へ](document-creation-process.md) | [目次に戻る](../../README.md) | [次の章へ →](workspace-setup.md)
-
----
 
 # 実際の文書制作への移行：段階的制作による品質確保
 

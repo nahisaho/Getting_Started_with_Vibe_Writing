@@ -1,8 +1,4 @@
----
-
 [← 前の章へ](preparation.md) | [目次に戻る](../../README.md) | [次の章へ →](document-creation-process.md)
-
----
 
 # VIBEに基づくドキュメント戦略設計
 

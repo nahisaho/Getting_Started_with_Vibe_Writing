@@ -1,8 +1,4 @@
----
-
 [← 前の章へ](what-is-vibe-writing.md) | [目次に戻る](../../README.md) | [次の章へ →](vibe-strategy-design.md)
-
----
 
 # 事前準備
 

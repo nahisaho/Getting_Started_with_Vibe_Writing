@@ -1,8 +1,4 @@
----
-
 [← 前の章へ](content-creation-execution.md) | [目次に戻る](../../README.md)
-
----
 
 # Vibe Writingハンドブックを活用したプレゼンテーション資料作成ガイド
 
