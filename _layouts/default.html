@@ -222,7 +222,7 @@
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script>
         mermaid.initialize({ 
-            startOnLoad: true,
+            startOnLoad: false,
             theme: 'default',
             themeVariables: {
                 primaryColor: '#667eea',
@@ -232,6 +232,26 @@
                 secondaryColor: '#006100',
                 tertiaryColor: '#fff'
             }
+        });
+        
+        // ページ読み込み後にmermaidコードブロックを処理
+        document.addEventListener('DOMContentLoaded', function() {
+            // コードブロック内のmermaidコードを探す
+            document.querySelectorAll('pre code.language-mermaid').forEach(function(element) {
+                // 親要素のpreを取得
+                const pre = element.parentElement;
+                
+                // mermaid用のdivを作成
+                const mermaidDiv = document.createElement('div');
+                mermaidDiv.className = 'mermaid';
+                mermaidDiv.textContent = element.textContent;
+                
+                // preをmermaid divに置き換え
+                pre.parentNode.replaceChild(mermaidDiv, pre);
+            });
+            
+            // mermaidを初期化
+            mermaid.init();
         });
     </script>
 </head>
