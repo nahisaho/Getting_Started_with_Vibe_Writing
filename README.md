@@ -2,7 +2,7 @@
 
 大学教職員向け生成AI利活用ハンドブックの作成を通じて、Vibe Writingの手法を学ぶ実践的なガイドです。
 
-🌐 **[GitHub Pagesで見る](https://nahisaho.github.io/Getting_Started_with_Vibe_Writing/)** | 📚 **[ガイド一覧](docs/)** | 🚀 **[すぐに始める](#-はじめ方)**
+🌐 **[GitHub Pagesで見る](https://nahisaho.github.io/Getting_Started_with_Vibe_Writing/)** | 📚 **[ガイド一覧](docs/)** | 🎯 **[プレゼンテーション](https://nahisaho.github.io/Getting_Started_with_Vibe_Writing/presentation/)** | 🚀 **[すぐに始める](#-はじめ方)**
 
 ## 📚 ガイド文書
 
@@ -93,6 +93,20 @@ graph LR
 - 生成AIを活用した効率的な文書作成を学びたい方
 - Vibe Writingの手法を実践的に習得したい方
 - チームでのドキュメント作成を改善したい方
+
+## 🎯 プレゼンテーション資料
+
+本ガイドの内容をインタラクティブなプレゼンテーション形式でも提供しています。
+
+**[プレゼンテーションを見る](https://nahisaho.github.io/Getting_Started_with_Vibe_Writing/presentation/)**
+
+### プレゼンテーションの特徴
+- 🎨 Swiper.jsを使用したスムーズなスライド遷移
+- ⌨️ キーボード操作対応（矢印キー、Fキーで全画面）
+- 🖱️ マウスホイールでのナビゲーション
+- 📱 タッチジェスチャー対応（モバイル）
+- 📊 進捗バーとスライドカウンター
+- 🎯 Claude Sonnet 4向けの簡潔プロンプト例を収録
 
 ## 🤝 貢献について
 
