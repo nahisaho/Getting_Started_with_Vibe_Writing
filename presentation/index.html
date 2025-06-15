@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Writing 実践ガイド - プレゼンテーション</title>
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #f093fb;
+            --text-dark: #2d3748;
+            --text-light: #ffffff;
+            --bg-light: #f7fafc;
+            --bg-dark: #1a202c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow: hidden;
+        }
+
+        /* Swiper Container */
+        .swiper {
+            width: 100%;
+            height: 100vh;
+        }
+
+        /* Slide Base Styles */
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            background: var(--bg-light);
+        }
+
+        /* Title Slide */
+        .slide-title {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .slide-title h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .slide-title .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .slide-title .date {
+            font-size: 1.2rem;
+            opacity: 0.7;
+        }
+
+        /* Content Slides */
+        .slide-content {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .slide-content h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .slide-content h3 {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .slide-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .slide-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .slide-content li {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .slide-content li:before {
+            content: "▶";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        /* VIBE Framework Slide */
+        .vibe-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .vibe-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .vibe-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .vibe-card h4 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .vibe-card p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        /* Navigation */
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navigation button {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            margin: 0 10px;
+            cursor: pointer;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        .navigation button:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: width 0.3s ease;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slide-title h1 {
+                font-size: 2.5rem;
+            }
+
+            .slide-content h2 {
+                font-size: 2rem;
+            }
+
+            .vibe-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .swiper-slide {
+                padding: 20px;
+            }
+        }
+
+        /* Code Block Styles */
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow-x: auto;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.95rem;
+        }
+
+        /* Prompt Styles */
+        .prompt-box {
+            background: linear-gradient(135deg, #667eea15, #764ba215);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .prompt-box .prompt-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Diagram Container */
+        .diagram-container {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        /* Summary Slide */
+        .slide-summary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-light);
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .summary-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .summary-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-item p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-bar-fill" id="progressBar"></div>
+    </div>
+
+    <!-- Swiper Container -->
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            
+            <!-- Slide 1: Title -->
+            <div class="swiper-slide slide-title">
+                <div class="slide-content">
+                    <h1 class="animate-in">🎯 Vibe Writing 実践ガイド</h1>
+                    <p class="subtitle animate-in" style="animation-delay: 0.2s">
+                        大学教職員向け生成AI利活用ハンドブックの作成を通じて<br>
+                        Vibe Writingの手法を実践的に学ぶ
+                    </p>
+                    <p class="date animate-in" style="animation-delay: 0.4s">
+                        <i class="fas fa-calendar"></i> 2024
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 2: Overview -->
+            <div class="swiper-slide">
+                <div class="slide-content">
+                    <h2>Vibe Writingとは？</h2>
+                    <div class="animate-in">
+                        <p>生成AIとの協働による新しい文書作成手法</p>
+                        <ul>
+                            <li>🤝 AIとの対話的な文書作成</li>
+                            <li>🎯 目的志向のコンテンツ設計</li>
+                            <li>🔄 反復的な改善プロセス</li>
+                            <li>⚡ 効率的な大規模文書制作</li>
+                        </ul>
+                    </div>
+                    <div class="prompt-box animate-in" style="animation-delay: 0.3s">
+                        <div class="prompt-title">🎯 簡潔プロンプト例（Claude Sonnet 4推奨）</div>
+                        <p>「大学教職員向けの生成AI利活用ガイドを作成してください」</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: VIBE Framework -->
+            <div class="swiper-slide">
+                <div class="slide-content">
+                    <h2>VIBEフレームワーク</h2>
+                    <div class="vibe-grid animate-in">
+                        <div class="vibe-card">
+                            <h4>🎯 Value（価値）</h4>
+                            <p>読者に提供する具体的な価値と利益の明確化</p>
+                        </div>
+                        <div class="vibe-card">
+                            <h4>💡 Intent（意図）</h4>
+                            <p>文書の目的と達成すべきゴールの設定</p>
+                        </div>
+                        <div class="vibe-card">
+                            <h4>⚖️ Balance（バランス）</h4>
+                            <p>専門性と理解しやすさの適切な調整</p>
+                        </div>
+                        <div class="vibe-card">
+                            <h4>🤝 Engagement（関与）</h4>
+                            <p>読者の興味を引き、行動を促す仕組み</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: Process Flow -->
+            <div class="swiper-slide">
+                <div class="slide-content">
+                    <h2>Vibe Writing実践プロセス</h2>
+                    <div class="diagram-container animate-in">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDgwMCA0MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWQxIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM2NjdlZWE7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6Izc2NGJhMjtzdG9wLW9wYWNpdHk6MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIAogIDwhLS0gQmFja2dyb3VuZCAtLT4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iI2Y3ZmFmYyIgLz4KICAKICA8IS0tIFN0ZXAgMSAtLT4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDAsIDEwMCkiPgogICAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNTAiIGZpbGw9InVybCgjZ3JhZDEpIiAvPgogICAgPHRleHQgeD0iNTAiIHk9IjU1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9ImJvbGQiPjE8L3RleHQ+CiAgICA8dGV4dCB4PSI1MCIgeT0iMTMwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCI+5YmN5YKZ55Sw6Kit5a6aPC90ZXh0PgogIDwvZz4KICAKICA8IS0tIEFycm93IDEgLS0+CiAgPHBhdGggZD0iTTIwMCwxNTAgTDI1MCwxNTAiIHN0cm9rZT0iIzY2N2VlYSIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93aGVhZCkiIC8+CiAgCiAgPCEtLSBTdGVwIDIgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjUwLCAxMDApIj4KICAgIDxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjUwIiBmaWxsPSJ1cmwoI2dyYWQxKSIgLz4KICAgIDx0ZXh0IHg9IjUwIiB5PSI1NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtc2l6ZT0iMjgiIGZvbnQtd2VpZ2h0PSJib2xkIj4yPC90ZXh0PgogICAgPHRleHQgeD0iNTAiIHk9IjEzMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9ImJvbGQiPlZJQkXmiJjnlaXoqK3oqIg8L3RleHQ+CiAgPC9nPgogIAogIDwhLS0gQXJyb3cgMiAtLT4KICA8cGF0aCBkPSJNMzUwLDE1MCBMNDAwLDE1MCIgc3Ryb2tlPSIjNjY3ZWVhIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiIG1hcmtlci1lbmQ9InVybCgjYXJyb3doZWFkKSIgLz4KICAKICA8IS0tIFN0ZXAgMyAtLT4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MDAsIDEwMCkiPgogICAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNTAiIGZpbGw9InVybCgjZ3JhZDEpIiAvPgogICAgPHRleHQgeD0iNTAiIHk9IjU1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9ImJvbGQiPjM8L3RleHQ+CiAgICA8dGV4dCB4PSI1MCIgeT0iMTMwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCI+5q615ZqO55qE5Yi25L2cPC90ZXh0PgogIDwvZz4KICAKICA8IS0tIEFycm93IDMgLS0+CiAgPHBhdGggZD0iTTUwMCwxNTAgTDU1MCwxNTAiIHN0cm9rZT0iIzY2N2VlYSIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIiBtYXJrZXItZW5kPSJ1cmwoI2Fycm93aGVhZCkiIC8+CiAgCiAgPCEtLSBTdGVwIDQgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTUwLCAxMDApIj4KICAgIDxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjUwIiBmaWxsPSJ1cmwoI2dyYWQxKSIgLz4KICAgIDx0ZXh0IHg9IjUwIiB5PSI1NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtc2l6ZT0iMjgiIGZvbnQtd2VpZ2h0PSJib2xkIj40PC90ZXh0PgogICAgPHRleHQgeD0iNTAiIHk9IjEzMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9ImJvbGQiPuWTgeizqumpl+iovDwvdGV4dD4KICA8L2c+CiAgCiAgPCEtLSBGZWVkYmFjayBMb29wIC0tPgogIDxwYXRoIGQ9Ik02MDAsIDI1MCBMNjAwLDMwMCBMMjAwLDMwMCBMMjAwLDI1MCIgc3Ryb2tlPSIjNzY0YmEyIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiIHN0cm9rZS1kYXNoYXJyYXk9IjUsNSIgbWFya2VyLWVuZD0idXJsKCNhcnJvd2hlYWQyKSIgLz4KICA8dGV4dCB4PSI0MDAiIHk9IjMyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzc2NGJhMiI+44OV44Kj44O844OJ44OQ44OD44Kv44Or44O844OJPC90ZXh0PgogIAogIDwhLS0gQXJyb3cgbWFya2VycyAtLT4KICA8ZGVmcz4KICAgIDxtYXJrZXIgaWQ9ImFycm93aGVhZCIgbWFya2VyV2lkdGg9IjEwIiBtYXJrZXJIZWlnaHQ9IjciIHJlZlg9IjkiIHJlZlk9IjMuNSIgb3JpZW50PSJhdXRvIj4KICAgICAgPHBvbHlnb24gcG9pbnRzPSIwIDAsIDEwIDMuNSwgMCA3IiBmaWxsPSIjNjY3ZWVhIiAvPgogICAgPC9tYXJrZXI+CiAgICA8bWFya2VyIGlkPSJhcnJvd2hlYWQyIiBtYXJrZXJXaWR0aD0iMTAiIG1hcmtlckhlaWdodD0iNyIgcmVmWD0iOSIgcmVmWT0iMy41IiBvcmllbnQ9ImF1dG8iPgogICAgICA8cG9seWdvbiBwb2ludHM9IjAgMCwgMTAgMy41LCAwIDciIGZpbGw9IiM3NjRiYTIiIC8+CiAgICA8L21hcmtlcj4KICA8L2RlZnM+Cjwvc3ZnPg==" alt="Vibe Writing Process" style="max-width: 100%; height: auto;">
+                    </div>
+                    <div class="animate-in" style="animation-delay: 0.3s">
+                        <ol style="list-style: decimal; padding-left: 2rem;">
+                            <li>事前準備：環境構築とツール選定</li>
+                            <li>VIBE戦略設計：目次とコンテンツ構造の策定</li>
+                            <li>段階的制作：章ごとの執筆と改善</li>
+                            <li>品質検証：全体の整合性確認</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5: Preparation -->
+            <div class="swiper-slide">
+                <div class="slide-content">
+                    <h2>事前準備のポイント</h2>
+                    <div class="animate-in">
+                        <h3>🛠️ 環境構築</h3>
+                        <ul>
+                            <li>生成AI（Claude/ChatGPT）のアカウント準備</li>
+                            <li>GitHubリポジトリの作成</li>
+                            <li>マークダウンエディタの設定</li>
+                        </ul>
+                    </div>
+                    <div class="animate-in" style="animation-delay: 0.2s">
+                        <h3>📊 ターゲット分析</h3>
+                        <ul>
+                            <li>大学教職員の技術レベル把握</li>
+                            <li>利用シーンの想定</li>
+                            <li>必要なコンテンツの洗い出し</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Strategy Design -->
+            <div class="swiper-slide">
+                <div class="slide-content">
+                    <h2>VIBE戦略設計の実践</h2>
+                    <div class="prompt-box animate-in">
+                        <div class="prompt-title">🎯 簡潔プロンプト（Claude Sonnet 4）</div>
+                        <p>「大学教職員向け生成AI利活用ハンドブックの目次を作成してください。VIBEフレームワークを考慮し、実践的で段階的な学習ができる構成にしてください」</p>
+                    </div>
+                    <div class="animate-in" style="animation-delay: 0.3s">
+                        <h3>📋 目次構成例</h3>
+                        <ol style="list-style: decimal; padding-left: 2rem;">
+                            <li>生成AIの基礎知識</li>
+                            <li>教育現場での活用方法</li>
+                            <li>研究支援への応用</li>
+                            <li>事務作業の効率化</li>
+                            <li>倫理とセキュリティ</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Content Creation -->
+            <div class="swiper-slide">
+                <div class="slide-content">
+                    <h2>段階的なコンテンツ制作</h2>
+                    <div class="animate-in">
+                        <h3>🔄 反復的改善プロセス</h3>
+                        <div class="code-block">
+                            <pre>1. 初稿作成
+   → AIに章の概要を作成させる
+2. レビューと改善
+   → 不足部分を特定し、追加指示
+3. 実例の追加
+   → 具体的な使用例を組み込む
+4. 最終調整
+   → 読みやすさと一貫性を確保</pre>
+                        </div>
+                    </div>
+                    <div class="prompt-box animate-in" style="animation-delay: 0.3s">
+                        <div class="prompt-title">💡 改善プロンプト例</div>
+                        <p>「この章に大学での具体的な活用事例を3つ追加してください。初心者でも理解できるよう、ステップバイステップで説明してください」</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Quality Assurance -->
+            <div class="swiper-slide">
+                <div class="slide-content">
+                    <h2>品質保証のチェックリスト</h2>
+                    <div class="animate-in">
+                        <ul>
+                            <li>✅ 一貫性：用語・トーン・形式の統一</li>
+                            <li>✅ 完全性：必要な情報の網羅</li>
+                            <li>✅ 正確性：技術的な誤りの排除</li>
+                            <li>✅ 実用性：すぐに使える具体例</li>
+                            <li>✅ アクセシビリティ：誰でも理解可能</li>
+                        </ul>
+                    </div>
+                    <div class="animate-in" style="animation-delay: 0.3s">
+                        <h3>🔍 セキュリティチェック</h3>
+                        <ul>
+                            <li>機密情報の除外確認</li>
+                            <li>個人情報保護の徹底</li>
+                            <li>著作権の遵守</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 9: Best Practices -->
+            <div class="swiper-slide">
+                <div class="slide-content">
+                    <h2>Vibe Writingベストプラクティス</h2>
+                    <div class="animate-in">
+                        <h3>🌟 成功のための5つの原則</h3>
+                        <ol style="list-style: decimal; padding-left: 2rem;">
+                            <li><strong>明確な目的設定</strong>：文書の目的を最初に定義</li>
+                            <li><strong>段階的アプローチ</strong>：小さく始めて徐々に拡張</li>
+                            <li><strong>継続的な対話</strong>：AIとの対話を重ねて改善</li>
+                            <li><strong>実例の重視</strong>：抽象論より具体例</li>
+                            <li><strong>フィードバック活用</strong>：読者の声を反映</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 10: Summary -->
+            <div class="swiper-slide slide-summary">
+                <div class="slide-content">
+                    <h2 style="color: white;">まとめ：Vibe Writingの価値</h2>
+                    <div class="summary-grid animate-in">
+                        <div class="summary-item">
+                            <h4>⚡ 効率性</h4>
+                            <p>従来の1/3の時間で高品質な文書作成</p>
+                        </div>
+                        <div class="summary-item">
+                            <h4>🎯 品質向上</h4>
+                            <p>AIとの協働による一貫性のある内容</p>
+                        </div>
+                        <div class="summary-item">
+                            <h4>🔄 柔軟性</h4>
+                            <p>読者ニーズに応じた迅速な改訂</p>
+                        </div>
+                        <div class="summary-item">
+                            <h4>📈 スケーラビリティ</h4>
+                            <p>大規模文書でも管理可能</p>
+                        </div>
+                    </div>
+                    <div class="animate-in" style="animation-delay: 0.3s; text-align: center; margin-top: 2rem;">
+                        <p style="font-size: 1.3rem;">
+                            <strong>Vibe Writingで、AIと共に新しい文書作成の世界へ</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="navigation">
+        <button onclick="swiper.slidePrev()"><i class="fas fa-chevron-left"></i></button>
+        <span id="slideCounter">1 / 10</span>
+        <button onclick="swiper.slideNext()"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script>
+        // Initialize Swiper
+        const swiper = new Swiper('.swiper', {
+            direction: 'horizontal',
+            loop: false,
+            speed: 600,
+            
+            // Pagination
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+                renderBullet: function (index, className) {
+                    return '<span class="' + className + '">' + (index + 1) + '</span>';
+                },
+            },
+            
+            // Keyboard control
+            keyboard: {
+                enabled: true,
+                onlyInViewport: true,
+            },
+            
+            // Mouse wheel control
+            mousewheel: {
+                invert: false,
+                forceToAxis: true,
+            },
+            
+            // Hash navigation
+            hashNavigation: {
+                watchState: true,
+            },
+            
+            // Effect
+            effect: 'slide',
+            
+            // Responsive breakpoints
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 20
+                },
+                768: {
+                    slidesPerView: 1,
+                    spaceBetween: 30
+                },
+                1024: {
+                    slidesPerView: 1,
+                    spaceBetween: 40
+                },
+            }
+        });
+
+        // Update slide counter
+        function updateSlideCounter() {
+            const current = swiper.activeIndex + 1;
+            const total = swiper.slides.length;
+            document.getElementById('slideCounter').textContent = `${current} / ${total}`;
+            
+            // Update progress bar
+            const progress = (current / total) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        // Listen to slide change
+        swiper.on('slideChange', updateSlideCounter);
+        
+        // Initialize counter
+        updateSlideCounter();
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'f' || e.key === 'F') {
+                // Toggle fullscreen
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen();
+                } else {
+                    document.exitFullscreen();
+                }
+            }
+        });
+
+        // Reset animations when slide changes
+        swiper.on('slideChangeTransitionStart', function () {
+            const activeSlide = swiper.slides[swiper.activeIndex];
+            const animatedElements = activeSlide.querySelectorAll('.animate-in');
+            animatedElements.forEach(el => {
+                el.style.animation = 'none';
+                el.offsetHeight; // Trigger reflow
+                el.style.animation = null;
+            });
+        });
+
+        // Preload images
+        const images = [
+            // Add any image URLs here if needed
+        ];
+        
+        images.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+    </script>
+</body>
+</html>
