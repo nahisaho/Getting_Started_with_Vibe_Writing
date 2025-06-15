@@ -1,0 +1,43 @@
+# GitHub Pages設定（最小構成）
+title: "Vibe Writing実践ガイド"
+description: "大学教職員向け生成AI利活用ハンドブックの作成を通じて、Vibe Writingの手法を学ぶ実践的なガイド"
+
+# Markdownエンジン設定
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
+# テーマ設定（GitHub Pagesデフォルト）
+theme: jekyll-theme-minimal
+
+# 日本語対応
+lang: ja
+
+# プラグイン（GitHub Pages対応のみ）
+plugins:
+  - jekyll-relative-links
+  - jekyll-default-layout
+
+# 相対リンク設定
+relative_links:
+  enabled: true
+  collections: true
+
+# デフォルトレイアウト設定
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: "docs"
+    values:
+      layout: "default"
